@@ -39,14 +39,69 @@
    - 递归处理子文件夹
    - 详细的上传统计
 
-## 🚀 快速安装
+## 🚀 安装方式
 
-### 1. 安装依赖
+### 方式一：使用npm包（推荐）
+
+#### 1. 直接使用npx（无需安装）
+在Cursor的MCP配置中：
+```json
+{
+  "mcpServers": {
+    "mcp-img-compress-oss": {
+      "command": "npx",
+      "args": ["-y", "mcp-img-compress-oss@latest"],
+      "env": {
+        "OSS_ENDPOINT": "oss-cn-hangzhou.aliyuncs.com",
+        "OSS_ACCESS_KEY_ID": "your_access_key_id",
+        "OSS_ACCESS_KEY_SECRET": "your_access_key_secret",
+        "OSS_BUCKET": "your_bucket_name",
+        "OSS_REGION": "oss-cn-hangzhou",
+        "OSS_PATH": "images"
+      }
+    }
+  }
+}
+```
+
+#### 2. 全局安装
+```bash
+npm install -g mcp-img-compress-oss
+```
+
+然后在Cursor配置中：
+```json
+{
+  "mcpServers": {
+    "mcp-img-compress-oss": {
+      "command": "mcp-img-compress-oss",
+      "env": {
+        "OSS_ENDPOINT": "oss-cn-hangzhou.aliyuncs.com",
+        "OSS_ACCESS_KEY_ID": "your_access_key_id",
+        "OSS_ACCESS_KEY_SECRET": "your_access_key_secret",
+        "OSS_BUCKET": "your_bucket_name",
+        "OSS_REGION": "oss-cn-hangzhou",
+        "OSS_PATH": "images"
+      }
+    }
+  }
+}
+```
+
+### 方式二：本地开发安装
+
+#### 1. 克隆项目
+```bash
+git clone https://github.com/HongHaiyang/mcp-img-compress-oss.git
+cd mcp-img-compress-oss
+```
+
+#### 2. 安装依赖
 ```bash
 npm install
 ```
 
-### 2. 自动化配置
+#### 3. 自动化配置
 ```bash
 ./setup.sh
 ```
@@ -56,7 +111,7 @@ npm install
 npm start
 ```
 
-## 🔧 在Cursor中配置
+#### 4. 在Cursor中配置
 
 配置文件已自动创建在：`~/.cursor/mcp_servers.json`
 
@@ -66,8 +121,8 @@ npm start
   "mcpServers": {
     "mcp-img-compress-oss": {
       "command": "node",
-      "args": ["/Users/ls/Documents/mcp-img-compress-oss/src/index.js"],
-      "cwd": "/Users/ls/Documents/mcp-img-compress-oss",
+      "args": ["/path/to/mcp-img-compress-oss/src/index.js"],
+      "cwd": "/path/to/mcp-img-compress-oss",
       "env": {}
     }
   }

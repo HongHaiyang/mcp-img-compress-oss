@@ -1,0 +1,47 @@
+# Development files
+.git/
+.github/
+node_modules/
+.vscode/
+.idea/
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Environment and config files
+.env*
+.npmrc
+.nvmrc
+
+# Build and temp files
+*.log
+*.tmp
+*.temp
+dist/
+build/
+
+# Documentation source (keep README.md)
+docs/
+.docs/
+
+# Examples and demos
+examples/
+demo/
+test_output/
+test_images/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+
+# Setup script (not needed for npm users)
+setup.sh
+debug_env.js
+mcp_servers.json.example 
