@@ -1,0 +1,33 @@
+{
+  "name": "mcp-img-compress-oss",
+  "version": "1.1.0",
+  "description": "图片无损压缩与OSS上传MCP工具，支持多种格式的高质量压缩和阿里云OSS上传",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "cursor",
+    "claude",
+    "image",
+    "compression",
+    "optimization",
+    "oss",
+    "aliyun",
+    "upload"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "ali-oss": "^6.23.0",
+    "glob": "^10.3.0",
+    "sharp": "^0.33.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

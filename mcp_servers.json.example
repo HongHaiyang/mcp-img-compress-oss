@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "mcp-img-compress-oss": {
+      "command": "node",
+      "args": ["/Users/ls/Documents/mcp-img-compress-oss/src/index.js"],
+      "cwd": "/Users/ls/Documents/mcp-img-compress-oss",
+      "env": {}
+    }
+  }
+} 
