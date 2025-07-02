@@ -40,6 +40,8 @@ Thumbs.db
 # Backup files
 *.bak
 *.backup
+**/*.bak
+src/index.js.bak
 
 # Setup script (not needed for npm users)
 setup.sh
