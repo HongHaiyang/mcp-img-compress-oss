@@ -1,7 +1,7 @@
 {
   "name": "mcp-img-compress-oss",
   "version": "1.1.0",
-  "description": "图片无损压缩与OSS上传MCP工具，支持多种格式的高质量压缩和阿里云OSS上传",
+  "description": "图片无损压缩与OSS上传MCP工具，可以让AI将项目中的图片资源无损并上传至阿里云 oss 用 cdn 链接替换图片资源",
   "main": "src/index.js",
   "bin": {
     "mcp-img-compress-oss": "src/index.js"
