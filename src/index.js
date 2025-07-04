@@ -60,10 +60,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             quality: {
               type: "number",
-              description: "压缩质量 (1-100)，默认95（无损或近无损）",
+              description: "压缩质量 (1-100)，默认85（高质量压缩）",
               minimum: 1,
               maximum: 100,
-              default: 95,
+              default: 85,
             },
             format: {
               type: "string",
@@ -98,10 +98,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             quality: {
               type: "number",
-              description: "压缩质量 (1-100)，默认95（无损或近无损）",
+              description: "压缩质量 (1-100)，默认85（高质量压缩）",
               minimum: 1,
               maximum: 100,
-              default: 95,
+              default: 85,
             },
             format: {
               type: "string",
@@ -244,7 +244,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const {
           inputPath,
           outputPath,
-          quality = 95,
+          quality = 85,
           format,
           keepMetadata = false,
         } = args;
@@ -300,7 +300,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const {
           inputFolder,
           outputFolder,
-          quality = 95,
+          quality = 85,
           format,
           recursive = true,
         } = args;

@@ -5,7 +5,7 @@ import { compressImage, getFileSize, formatFileSize, SUPPORTED_FORMATS } from ".
 
 export async function compressFolder(inputFolder, outputFolder, options = {}) {
   const {
-    quality = 95,
+    quality = 85,
     format,
     recursive = true,
   } = options;
@@ -54,7 +54,7 @@ export async function compressFolder(inputFolder, outputFolder, options = {}) {
     const result = await compressImage(inputPath, outputPath, {
       quality,
       format,
-      keepMetadata: true,
+      keepMetadata: false,
       progressive: true,
     });
 
