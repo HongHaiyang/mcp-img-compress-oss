@@ -66,7 +66,7 @@ async function uploadToOSS(options) {
   const filename = generateSimpleUUID();
   
   // 生成OSS对象名称
-  const objectName = `${ossPath}${ossPath ? '/' : ''}${filename}${extname}`;
+  const objectName = path.posix.join(ossPath, `${filename}${extname}`);
 
   try {
     // 上传文件到OSS
