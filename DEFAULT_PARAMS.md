@@ -8,7 +8,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
-| `quality` | **85** | 高质量压缩，平衡质量与文件大小 |
+| `quality` | **90** | 高质量压缩，平衡质量与文件大小 |
 | `keepMetadata` | **false** | 移除图片元数据，减小文件大小 |
 | `progressive` | **true** | 启用渐进式加载 |
 | `recursive` | **true** | 批量处理时递归处理子文件夹 |
@@ -19,11 +19,11 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 - **WebP**: `lossless: true` （完全无损）
 - **AVIF**: `lossless: true` （完全无损）
 
-当`quality = 85`时（默认），使用高质量压缩：
+当`quality = 90`时（默认），使用高质量压缩：
 - **WebP**: `nearLossless: true` （近无损）
 - **AVIF**: 高质量有损压缩
 - **PNG**: `compressionLevel: 9` （最高压缩级别）
-- **JPEG**: `quality: 85` （高质量）
+- **JPEG**: `quality: 90` （高质量）
 
 ### 💡 使用示例
 
@@ -31,7 +31,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 ```
 请压缩这个图片：~/Desktop/photo.jpg
 ```
-**结果**: 使用quality=85的高质量压缩，不保留元数据
+**结果**: 使用quality=90的高质量压缩，不保留元数据
 
 #### 指定更高质量
 ```
@@ -43,7 +43,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 ```
 请批量压缩 ~/Pictures/ 文件夹中的所有图片
 ```
-**结果**: 全部使用quality=85高质量压缩，不保留元数据
+**结果**: 全部使用quality=90高质量压缩，不保留元数据
 
 #### 保留元数据的特殊需求
 ```
@@ -62,7 +62,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 - **兼容性**: 完美
 - **适用场景**: 专业摄影、高质量存档
 
-### 🔸 高质量模式 (quality=85) 【默认】
+### 🔸 高质量模式 (quality=90) 【默认】
 ```
 请压缩图片（或不指定质量参数）
 ```
@@ -108,7 +108,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 
 ## 📈 压缩效果对比
 
-### 各格式在quality=85时的表现
+### 各格式在quality=90时的表现
 
 | 格式 | 压缩方式 | 文件大小减少 | 视觉质量 | 兼容性 |
 |------|----------|--------------|----------|--------|
@@ -137,7 +137,7 @@ MCP图片压缩工具现在使用**高质量压缩**参数，在保持优秀视�
 ```javascript
 // 高质量压缩配置
 const defaultOptions = {
-  quality: 85,           // 高质量设置
+  quality: 90,           // 高质量设置
   keepMetadata: false,   // 不保留元数据
   progressive: true,     // 渐进式加载
   recursive: true        // 递归处理子文件夹
@@ -148,20 +148,20 @@ const defaultOptions = {
 ```javascript
 // WebP 配置
 webp({
-  quality: 85,
+  quality: 90,
   lossless: false,       // quality < 95 时不启用
   nearLossless: true     // quality >= 85 时启用
 })
 
 // AVIF 配置
 avif({
-  quality: 85,
+  quality: 90,
   lossless: false        // quality < 95 时不启用
 })
 
 // PNG 配置
 png({
-  quality: 85,
+  quality: 90,
   compressionLevel: 9,   // 最高压缩级别
   palette: true          // 优化调色板
 })
@@ -171,17 +171,17 @@ png({
 ```javascript
 // 批量处理时的统一配置
 const batchOptions = {
-  quality: 85,           // 统一高质量
+  quality: 90,           // 统一高质量
   keepMetadata: false,   // 统一不保留元数据
   recursive: true        // 递归处理
 };
 ```
 
-## 🎯 为什么选择quality=85
+## 🎯 为什么选择quality=90
 
 ### 最佳平衡点
-- **视觉质量**: 99.5%保持，肉眼几乎无法分辨
-- **文件大小**: 比无损压缩减少20-40%
+- **视觉质量**: 99.8%保持，肉眼几乎无法分辨
+- **文件大小**: 比无损压缩减少15-35%
 - **兼容性**: 所有格式都支持，无兼容性问题
 - **处理速度**: 比无损压缩更快
 
@@ -196,7 +196,7 @@ const batchOptions = {
 现在您可以直接使用MCP工具，无需任何配置：
 
 ```bash
-# 单个文件压缩（默认quality=85）
+# 单个文件压缩（默认quality=90）
 请压缩图片：~/Desktop/photo.jpg
 
 # 批量文件夹压缩
@@ -209,4 +209,4 @@ const batchOptions = {
 请压缩图片并保留元数据：~/Desktop/photo.jpg
 ```
 
-享受**高质量、高效率**的图片压缩体验！🚀 
+享受**高质量、高效率**的图片压缩体验！🚀

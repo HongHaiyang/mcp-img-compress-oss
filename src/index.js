@@ -244,7 +244,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const {
           inputPath,
           outputPath,
-          quality = 85,
+          quality = 90,
           format,
           keepMetadata = false,
         } = args;
@@ -300,7 +300,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const {
           inputFolder,
           outputFolder,
-          quality = 85,
+          quality = 90,
           format,
           recursive = true,
         } = args;

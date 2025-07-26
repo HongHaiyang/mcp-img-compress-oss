@@ -5,7 +5,7 @@ import { compressImage, getFileSize, formatFileSize, SUPPORTED_FORMATS } from ".
 
 export async function compressFolder(inputFolder, outputFolder, options = {}) {
   const {
-    quality = 85,
+    quality = 90,
     format,
     recursive = true,
   } = options;
@@ -44,7 +44,11 @@ export async function compressFolder(inputFolder, outputFolder, options = {}) {
   let successCount = 0;
 
   for (const inputPath of imageFiles) {
-    const relativePath = path.relative(inputFolder, inputPath);
+    let relativePath = path.relative(inputFolder, inputPath);
+    if (format) {
+      const ext = path.extname(relativePath);
+      relativePath = relativePath.replace(ext, `.${format}`);
+    }
     const outputPath = path.join(finalOutputFolder, relativePath);
 
     // 确保输出目录存在

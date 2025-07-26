@@ -24,7 +24,7 @@ export function formatFileSize(bytes) {
 export async function compressImage(inputPath, outputPath, options = {}) {
   try {
     const {
-      quality = 85,
+      quality = 90,
       format = null,
       keepMetadata = false,
       progressive = true,
@@ -54,25 +54,32 @@ export async function compressImage(inputPath, outputPath, options = {}) {
           compressionLevel: 9,
           progressive,
           palette: true,
+          adaptiveFiltering: true,
         });
         break;
       case "webp":
         sharpInstance = sharpInstance.webp({
           quality,
-          lossless: quality >= 95,
-          nearLossless: quality >= 85 && quality < 95,
+          lossless: quality >= 90,
+          nearLossless: quality >= 85 && quality < 90,
         });
         break;
       case "avif":
         sharpInstance = sharpInstance.avif({
           quality,
-          lossless: quality >= 95,
+          lossless: quality >= 90,
         });
         break;
     }
 
     await sharpInstance.toFile(outputPath);
-    const compressedSize = await getFileSize(outputPath);
+    let compressedSize = await getFileSize(outputPath);
+
+    if (compressedSize >= originalSize) {
+      await fs.copyFile(inputPath, outputPath);
+      compressedSize = originalSize;
+    }
+
     const compressionRatio = (
       ((originalSize - compressedSize) / originalSize) * 100
     ).toFixed(2);
