@@ -89,6 +89,11 @@ async function uploadFolderToOSS(options) {
     };
   }
 
+  // 检查文件数量是否超过限制
+  if (imageFiles.length > 100) {
+    throw new Error(`文件数量超出限制！检测到 ${imageFiles.length} 个图片文件，超过了 100 个文件的限制。请减少文件数量后重试。`);
+  }
+
   // 上传结果
   const results = [];
   let uploadedCount = 0;

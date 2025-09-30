@@ -38,6 +38,14 @@ export async function compressFolder(inputFolder, outputFolder, options = {}) {
     };
   }
 
+  // 检查文件数量是否超过限制
+  if (imageFiles.length > 100) {
+    return {
+      success: false,
+      message: `❌ 文件数量超出限制！\n\n检测到 ${imageFiles.length} 个图片文件，超过了 100 个文件的限制。\n请减少文件数量后重试。`,
+    };
+  }
+
   const results = [];
   let totalOriginalSize = 0;
   let totalCompressedSize = 0;
