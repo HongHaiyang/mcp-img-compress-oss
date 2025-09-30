@@ -244,7 +244,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const {
           inputPath,
           outputPath,
-          quality = 90,
+          quality = 85,
           format,
           keepMetadata = false,
         } = args;
@@ -423,7 +423,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             if (successList.length > 0) {
               summaryText += `成功上传的文件:\n`;
               successList.slice(0, 10).forEach((item, index) => {
-                summaryText += `${index + 1}. ${path.basename(item.originalPath)} -> ${item.url}\n`;
+                summaryText += `${index + 1}. ${item.originalPath} -> ${item.url}\n`;
               });
               
               if (successList.length > 10) {
@@ -434,13 +434,36 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             if (failedList.length > 0) {
               summaryText += `\n上传失败的文件:\n`;
               failedList.slice(0, 5).forEach((item, index) => {
-                summaryText += `${index + 1}. ${path.basename(item.originalPath)}: ${item.error}\n`;
+                summaryText += `${index + 1}. ${item.originalPath}: ${item.error}\n`;
               });
               
               if (failedList.length > 5) {
                 summaryText += `...等共 ${failedList.length} 个文件\n`;
               }
             }
+            
+            // 添加完整的 JSON 数据
+            const jsonData = JSON.stringify({
+              summary: {
+                inputFolder,
+                totalFiles: result.totalFiles,
+                uploadedFiles: result.uploadedFiles,
+                failedFiles: result.failedFiles
+              },
+              successList: successList.map(item => ({
+                localPath: item.originalPath,
+                ossUrl: item.url,
+                ossPath: item.ossPath,
+                size: item.size,
+                format: item.format
+              })),
+              failedList: failedList.map(item => ({
+                localPath: item.originalPath,
+                error: item.error
+              }))
+            }, null, 2);
+            
+            summaryText += `\n\n📋 完整的上传结果数据（JSON格式）:\n\`\`\`json\n${jsonData}\n\`\`\``;
             
             return {
               content: [
