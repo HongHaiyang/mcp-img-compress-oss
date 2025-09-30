@@ -19,10 +19,11 @@
    - 支持格式转换
    - 保持或移除元数据选项
 
-2. **批量压缩** (`compress_folder`) 
+2. **批量压缩** (`compress_folder`)
    - 递归处理文件夹及子文件夹
    - 批量格式转换
    - 压缩进度统计
+   - 最多支持100个文件批量处理
 
 3. **图片信息** (`get_image_info`)
    - 详细的图片元数据
@@ -38,12 +39,14 @@
    - 批量上传文件夹中的图片
    - 递归处理子文件夹
    - 详细的上传统计
+   - 最多支持100个文件批量上传
+   - 显示完整文件路径映射关系，返回结构化的JSON格式结果
 
 ## 🚀 安装方式
 
 ### 方式一：使用npm包（推荐）
 
-#### 1. 直接使用npx（无需安装）
+#### 直接使用npx
 在Cursor的MCP配置中：
 ```json
 {
@@ -52,41 +55,26 @@
       "command": "npx",
       "args": ["-y", "mcp-img-compress-oss@latest"],
       "env": {
-        "OSS_ENDPOINT": "oss-cn-hangzhou.aliyuncs.com",
+        "OSS_ENDPOINT": "your_oss_endpoint",
         "OSS_ACCESS_KEY_ID": "your_access_key_id",
         "OSS_ACCESS_KEY_SECRET": "your_access_key_secret",
         "OSS_BUCKET": "your_bucket_name",
-        "OSS_REGION": "oss-cn-hangzhou",
-        "OSS_PATH": "images"
+        "OSS_REGION": "your_oss_region",
+        "OSS_PATH": "your_storage_path"
       }
     }
   }
 }
 ```
-
-#### 2. 全局安装
-```bash
-npm install -g mcp-img-compress-oss
-```
-
-然后在Cursor配置中：
-```json
-{
-  "mcpServers": {
-    "mcp-img-compress-oss": {
-      "command": "mcp-img-compress-oss",
-      "env": {
-        "OSS_ENDPOINT": "oss-cn-hangzhou.aliyuncs.com",
-        "OSS_ACCESS_KEY_ID": "your_access_key_id",
-        "OSS_ACCESS_KEY_SECRET": "your_access_key_secret",
-        "OSS_BUCKET": "your_bucket_name",
-        "OSS_REGION": "oss-cn-hangzhou",
-        "OSS_PATH": "images"
-      }
-    }
-  }
-}
-```
+##### OSS参数说明
+| 参数 | 说明 | 示例值 |
+|------|------|--------|
+| `OSS_ENDPOINT` | OSS服务的接入点 | `oss-cn-beijing.aliyuncs.com` |
+| `OSS_ACCESS_KEY_ID` | 访问密钥ID | `LTAI5txxxxxxxxxxxxxx` |
+| `OSS_ACCESS_KEY_SECRET`| 访问密钥密码 | `xxxxxxxxxxxxxxxxxxxxxxxx` |
+| `OSS_BUCKET` | OSS存储桶名称 | `your-bucket-name` |
+| `OSS_REGION` | OSS的地域 | `oss-cn-beijing` |
+| `OSS_PATH` | 存储路径前缀（可选） | `images/project-name` 或留空 `""` |
 
 ### 方式二：本地开发安装
 

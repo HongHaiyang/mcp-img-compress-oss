@@ -28,7 +28,7 @@ const ossConfig = {
 const server = new Server(
   {
     name: "mcp-img-compress-oss",
-    version: "1.2.1",
+    version: "1.4.0",
   },
   {
     capabilities: {
